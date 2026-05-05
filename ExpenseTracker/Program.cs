@@ -2,10 +2,28 @@
 using ExpenseTracker;
     
 class Program {
+    static ExpenseService expense = new ExpenseService();
     static void Main(string[] args)
     {
-        ExpenseService expense = new ExpenseService();
+        Program.RunCommand();
+    }
+
+    static void IsTryAgain(string decision)
+    {   
         
+        if (decision.ToLower() == "yes" )
+        {
+            Program.RunCommand();
+        }
+        else
+        {
+            Console.WriteLine( "exiting program...");
+            return;
+        }
+    }
+
+    static void RunCommand()
+    {
         Console.WriteLine("Enter date of expense");
         string date = Console.ReadLine();
         
@@ -16,7 +34,12 @@ class Program {
         string description = Console.ReadLine();
         
         
-        expense.addExpense(date, amount, description);
-        expense.returnExpenseLists();
+        Program.expense.addExpense(date, amount, description);
+        Program.expense.returnExpenseLists();
         
-    }}     
+        Console.WriteLine("do you want to add more list?");
+        string decision = Console.ReadLine();
+
+        Program.IsTryAgain(decision);
+    }
+}     

@@ -24,8 +24,9 @@ class Program {
 
     static void RunCommand()
     {
-        Console.WriteLine("Enter date of expense");
+        Console.WriteLine("Enter date of expense format (yyyy-mm-dd)");
         string date = Console.ReadLine();
+        DateTime dDate = DateTime.ParseExact(date, "yyyy-MM-dd",null);
         
         Console.WriteLine("Enter the amount of expense");
         int amount = int.Parse(Console.ReadLine());
@@ -34,7 +35,7 @@ class Program {
         string description = Console.ReadLine();
         
         
-        Program.expense.addExpense(date, amount, description);
+        Program.expense.addExpense(dDate, amount, description);
         Program.expense.returnExpenseLists();
         
         Console.WriteLine("do you want to add more list?");

@@ -8,7 +8,7 @@ public class ExpenseService
     
     private List<Expense> _expenses = new List<Expense>();
     
-    public string addExpense (string date, int amount, string description)
+    public string addExpense (DateTime date, int amount, string description)
     {
         try
         {
